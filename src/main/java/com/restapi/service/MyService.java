@@ -1,15 +1,15 @@
 package com.restapi.service;
 
-import java.util.List;
-import java.util.Optional;
+//import java.util.List;
+//import java.util.Optional;
 
 import com.restapi.model.Patient;
 
 public interface MyService {
     
-    List<Patient> listAll();
-    List<Patient> getByFnameAndLname(String name);
+   // List<Patient> listAll();
+    //List<Patient> getByFnameAndLname(String name);
     Patient saveOrUpdate(Patient patient);
-    Optional<Patient> getByPid(String pid);
+    //Optional<Patient> getByPid(String pid);
 
 }

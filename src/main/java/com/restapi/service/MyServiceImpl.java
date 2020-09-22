@@ -1,8 +1,8 @@
 package com.restapi.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.Optional;
 
 import com.restapi.model.Patient;
 import com.restapi.repository.MyRepository;
@@ -21,6 +21,7 @@ public class MyServiceImpl implements MyService {
         this.myRepository = myRepository;
     }
 
+    /*
     @Override
     public List<Patient> getByFnameAndLname(String name) {
         List<Patient> patients = new ArrayList<>();
@@ -34,6 +35,7 @@ public class MyServiceImpl implements MyService {
         myRepository.findAll().forEach(patients::add);
         return patients;
     }
+*/
 
     @Override
     public Patient saveOrUpdate(Patient patient) {
@@ -41,12 +43,12 @@ public class MyServiceImpl implements MyService {
         myRepository.save(patient);
         return patient;
     }
-
+/*
     @Override
     public Optional<Patient> getByPid(String pid) {
         return myRepository.findById(pid);
     }
 
-    
+  */  
     
 }
