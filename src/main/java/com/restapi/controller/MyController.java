@@ -68,8 +68,8 @@ public class MyController {
                      //return new ResponseEntity<>(msg, HttpStatus.CREATED);
                     //return ResponseEntity<patient>(msg, header, Status, HttpStatus.CREATED);
                     //return ResponseEntity.status(HttpStatus.OK).headers(header).build();.........(working)
-                    
-		            return new ResponseEntity<Object>("New Patient is added", HttpStatus.CREATED);
+                    String msg = "New Patient is added";
+		            return new ResponseEntity<Object>(msg, HttpStatus.CREATED.valueOf(200));
                 } else {
                     
                   HttpStatus.valueOf(400);
