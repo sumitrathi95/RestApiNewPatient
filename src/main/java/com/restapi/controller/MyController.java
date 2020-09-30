@@ -5,12 +5,14 @@ import java.time.LocalDate;
 //import java.util.Optional;
 
 import com.restapi.model.Patient;
+import com.restapi.service.KafKaProducerService;
 import com.restapi.service.MyService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
+//import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MyController {
+    private final KafKaProducerService producerService;
+ 
+    @Autowired
+    public MyController(KafKaProducerService producerService) 
+    {
+        this.producerService = producerService;
+    }
 
     @Autowired
     private MyService myService;
@@ -56,7 +65,9 @@ public class MyController {
     }*/
     @PostMapping("/patient")
     public ResponseEntity<Object> newPatient(@RequestBody Patient patient, Object Status){
-                String pattern = "^([A-Za-z0-9])*$";
+
+
+        String pattern = "^([A-Za-z0-9])*$";
                 /*String msg = "Input format should be [A-Za-z0-9]";
                 HttpHeaders header = new HttpHeaders();
                 header.add("desc", "New Patient Addded");*/
@@ -64,6 +75,7 @@ public class MyController {
                 if (patient.getFirstname().matches(pattern) && patient.getLastname().matches(pattern) && patient.getDob().isBefore(LocalDate.now()) ) {
                     //System.out.println("valid");
                      Patient p = myService.saveOrUpdate(patient);
+                     this.producerService.sendMessage(p.getPid());
                      ////return new ResponseEntity<>(p, HttpStatus.CREATED);...........(working)
                      //return new ResponseEntity<>(msg, HttpStatus.CREATED);
                     //return ResponseEntity<patient>(msg, header, Status, HttpStatus.CREATED);
@@ -78,6 +90,22 @@ public class MyController {
                    return new ResponseEntity<Object>("Input format should be [A-Za-z0-9]", HttpStatus.INTERNAL_SERVER_ERROR.valueOf(400));
                 }
     }
+/*
+   @GetMapping(value = "/publish")
+    public void getMessageToKafkaTopic(String message) 
+    {
+    	System.out.println(message+" GET METHOD");
+        this.producerService.sendMessage(message);
+    }
+   */
+ /*
+    @PostMapping(value = "/publish")
+    public void sendMessageToKafkaTopic(@RequestParam("message") String message) 
+    {
+        this.producerService.sendMessage(message);
+    }*/
+
+
 
     /* @PostMapping("/collections")
     public ResponseEntity<Person> createPerson(@RequestBody Person per) {
