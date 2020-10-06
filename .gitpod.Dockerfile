@@ -12,7 +12,4 @@ RUN sudo mkdir -p /data/db \
 
 #Install mysql
 RUN sudo apt update \
-&& sudo apt install -y mysql-server \
-&& sudo mysql_secure_installation
-
-RUN sudo service mysql start
+&& sudo apt install -y mysql-server
