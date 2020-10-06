@@ -50,4 +50,4 @@ cd /workspace/kafkatutorial
 
 
 sudo aptitude install mysql-server mysql-client libmysqlclient15-dev
-shell> mysql -uroot -ppassword
+
