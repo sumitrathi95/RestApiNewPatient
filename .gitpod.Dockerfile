@@ -11,4 +11,4 @@ RUN sudo mkdir -p /data/db \
  && sudo chown gitpod:gitpod -R /data/db
 
 #Install mysql
-RUN sudo apt-get install mysql-server mysql-client libmysqlclient15-dev
+RUN sudo apt install mysql-server
