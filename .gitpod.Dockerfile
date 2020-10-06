@@ -15,4 +15,5 @@ RUN sudo apt update \
 && wget -c https://repo.mysql.com//mysql-apt-config_0.8.13-1_all.deb \
 && sudo dpkg -i mysql-apt-config_0.8.13-1_all.deb \
 && sudo apt-get install -y mysql-server
+&& sudo mysql_secure_installation
 RUN sudo service mysql start
