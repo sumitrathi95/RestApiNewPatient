@@ -49,5 +49,5 @@ bin/kafka-server-start.sh config/server.properties &
 cd /workspace/kafkatutorial
 
 
-sudo aptitude install mysql-server mysql-client libmysqlclient15-dev
+sudo apt-get install mysql-server mysql-client libmysqlclient15-dev
 
