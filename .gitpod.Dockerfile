@@ -10,6 +10,3 @@ RUN sudo apt-get update \
 RUN sudo mkdir -p /data/db \
  && sudo chown gitpod:gitpod -R /data/db
 
-#Install mysql
-RUN sudo apt-get update \
-&& sudo apt-get install -y mysql-community-server
