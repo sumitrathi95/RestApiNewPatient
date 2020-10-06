@@ -11,4 +11,6 @@ RUN sudo mkdir -p /data/db \
  && sudo chown gitpod:gitpod -R /data/db
 
 #Install mysql
-RUN sudo apt install mysql-server
+RUN wget -c https://repo.mysql.com//mysql-apt-config_0.8.13-1_all.deb
+RUN sudo dpkg -i mysql-apt-config_0.8.13-1_all.deb 
+RUN sudo apt-get install mysql-server
