@@ -47,3 +47,7 @@ bin/zookeeper-server-start.sh config/zookeeper.properties &
 bin/kafka-server-start.sh config/server.properties &
 
 cd /workspace/kafkatutorial
+
+
+sudo aptitude install mysql-server mysql-client libmysqlclient15-dev
+shell> mysql -uroot -ppassword
